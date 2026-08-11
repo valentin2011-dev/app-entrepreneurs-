@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="V-Problèmes — collecte et analyse des problèmes rencontrés par les entrepreneurs.">
+  <title>V-Problèmes</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">V-Problèmes</div>
+      <div class="subtitle">Validation terrain pour V-Développement</div>
+    </div>
+    <button id="installBtn" class="secondary hidden">Installer</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">TABLEAU DE BORD</span>
+        <h1>Quels problèmes reviennent le plus ?</h1>
+        <p>Ajoute les entrepreneurs que tu interroges et garde une trace précise de leurs problèmes.</p>
+      </div>
+      <div class="stats">
+        <div class="stat-card">
+          <strong id="totalEntrepreneurs">0</strong>
+          <span>entrepreneurs</span>
+        </div>
+        <div class="stat-card">
+          <strong id="totalProblems">0</strong>
+          <span>problèmes signalés</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ranking-card">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">CLASSEMENT</span>
+          <h2>Les problèmes les plus fréquents</h2>
+        </div>
+      </div>
+      <div id="ranking"></div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">CATÉGORIES</span>
+          <h2>Problèmes des entrepreneurs</h2>
+        </div>
+        <button id="resetBtn" class="danger-outline">Réinitialiser</button>
+      </div>
+      <div id="categories" class="category-list"></div>
+    </section>
+
+    <section class="all-card">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">HISTORIQUE</span>
+          <h2>Tous les entrepreneurs</h2>
+        </div>
+        <input id="searchInput" class="search" type="search" placeholder="Rechercher un nom...">
+      </div>
+      <div id="peopleTable"></div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-panel">
+      <button class="close" id="closeModal" aria-label="Fermer">×</button>
+      <span class="eyebrow">NOUVELLE OBSERVATION</span>
+      <h2 id="modalTitle">Ajouter un entrepreneur</h2>
+      <p id="modalCategory" class="modal-category"></p>
+
+      <form id="personForm">
+        <label>
+          Nom
+          <input id="nameInput" required maxlength="80" placeholder="Ex. Jean Dupont">
+        </label>
+
+        <label>
+          Note / problème constaté
+          <textarea id="noteInput" required maxlength="1000" rows="5"
+            placeholder="Ex. Perd environ 3 h/semaine à relancer les devis non signés."></textarea>
+        </label>
+
+        <label>
+          Importance
+          <select id="importanceInput">
+            <option value="low">Faible</option>
+            <option value="medium" selected>Moyenne</option>
+            <option value="high">Forte</option>
+          </select>
+        </label>
+
+        <label>
+          Temps perdu estimé
+          <div class="hours-row">
+            <input id="hoursInput" type="number" min="0" max="168" step="0.5" placeholder="0">
+            <span>h / semaine</span>
+          </div>
+        </label>
+
+        <div class="form-actions">
+          <button type="button" class="secondary" id="cancelBtn">Annuler</button>
+          <button type="submit" class="primary">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
