@@ -1,0 +1,11 @@
+{
+  "name": "V-Problèmes",
+  "short_name": "V-Problèmes",
+  "description": "Collecte et analyse des problèmes rencontrés par les entrepreneurs.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#111827",
+  "lang": "fr-FR",
+  "icons": []
+}
